@@ -5,6 +5,7 @@ int main()
     int x = 0;
     /* branch-1*/
     /* 123 */
+    222
     if (x == 12)
     {
         x = 15;
