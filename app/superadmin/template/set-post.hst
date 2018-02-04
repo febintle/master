@@ -1,0 +1,76 @@
+<form name="form_save" method="post" action="index.php?c=app&a=superadmin:index&s=save&os={$_G['GET']['S']}&ot={$_G['GET']['T']}&table=set">
+	<div class="pk-row pk-padding-bottom-15 pk-margin-bottom-15" style="border-bottom: solid 1px #458fce;">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-primary pk-text-nowrap">发帖相关</label>
+		<div class="pk-w-sm-8"></div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">HTML安全标签</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="bbcodemarks" placeholder="<a><p><u>" value="{$_G['SET']['BBCODEMARKS']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">HTML安全属性</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="bbcodeattrs" placeholder="target,href,style" value="{$_G['SET']['BBCODEATTRS']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">标题最小字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="readtitlemin" placeholder="1" value="{$_G['SET']['READTITLEMIN']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">标题最大字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="readtitlemax" placeholder="255" value="{$_G['SET']['READTITLEMAX']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">内容最小字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="readcontentmin" placeholder="3" value="{$_G['SET']['READCONTENTMIN']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">内容最大字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="readcontentmax" placeholder="6550" value="{$_G['SET']['READCONTENTMAX']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">回复最小字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="replycontentmin" placeholder="1" value="{$_G['SET']['REPLYCONTENTMIN']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">回复最大字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="replycontentmax" placeholder="255" value="{$_G['SET']['REPLYCONTENTMAX']}">
+		</div>
+	</div>
+	
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">消息最大字节数</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="number" name="postmessagemaxnum" placeholder="默认255" value="{$_G['SET']['POSTMESSAGEMAXNUM']}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right"></label>
+		<div class="pk-w-sm-8">
+			<button type="button" id="SubmitBtn">保存</button>
+		</div>
+	</div>
+</form>

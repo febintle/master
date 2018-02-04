@@ -1,0 +1,11 @@
+﻿<?xml version="1.0"?>
+<app>
+	<name>超级后台管理</name>
+	<type>app</type>
+	<dir>superadmin</dir>
+	<version>v3.0.0.20171022</version>
+	<users>1</users>
+	<author>puyuetian</author>
+	<link>http://www.hadsky.com</link>
+	<description>小白式的论坛后台管理应用。</description>
+</app>

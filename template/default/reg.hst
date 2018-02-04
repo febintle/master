@@ -1,0 +1,102 @@
+<div class="pk-container">
+	<div class=" pk-background-color-white pk-padding-15 pk-padding-top-30">
+		<form name="form_reg" method="post" action="index.php?c=savereg&return=json">
+			<div id="hadsky-regbox" class="pk-row pk-margin-left-right-auto" style="max-width: 360px;">
+				<div class="pk-w-sm-12 pk-text-center pk-text-xl pk-margin-bottom-15 pk-text-bold pk-text-primary">用户注册</div>
+
+				<input type="hidden" name="sex" value="s" />
+				<input type="hidden" name="nickname" value="闪亮的昵称~" />
+
+				<div class="pk-row pk-padding-15 pk-margin-bottom-15">
+					<div class="pk-w-sm-12 pk-text-center">
+						<img id="uploaduserheadbox" class="pk-display-block pk-margin-left-right-auto pk-cursor-pointer pk-radius-all" src="userhead/upload.png" alt="上传头像" onclick="uploadhead()" title="点我传头像哦~" style="width: 80px;height: 80px;">
+						<input type="hidden" name="userhead" value="" />
+					</div>
+				</div>
+
+				<div class="pk-row pk-margin-bottom-15">
+					<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-padding-right-0 pk-text-nowrap">用户名</label>
+					<div class="pk-w-sm-9">
+						<input type="text" class="pk-textbox" name="username" value="{$_G['TEMP']['REGUSERNAME']}" placeholder="{$_G['TEMP']['HANZI']}" title="{$_G['TEMP']['HANZI']}" autocomplete="off" required minlength="1" maxlength="24" onchange="form_reg.nickname.value=this.value" />
+					</div>
+				</div>
+
+				<div class="pk-row pk-margin-bottom-15">
+					<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-padding-right-0 pk-text-nowrap">邮箱</label>
+					<div class="pk-w-sm-9">
+						<input type="email" class="pk-textbox" name="email" value="{$_G['TEMP']['REGEMAIL']}" placeholder="Email地址，一但填写无法更改" autocomplete="off" required />
+					</div>
+				</div>
+
+				<div class="pk-row pk-margin-bottom-15">
+					<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-padding-right-0 pk-text-nowrap">设置密码</label>
+					<div class="pk-w-sm-9">
+						<input type="text" class="pk-textbox" name="password" value="" placeholder="任意字符，5-16位" required minlength="5" maxlength="16" autocomplete="off" />
+					</div>
+				</div>
+
+				{loadVerifycode('reg','reg')}
+
+				<div class="pk-row pk-margin-bottom-15">
+					<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right"></label>
+					<div class="pk-w-sm-9">
+						<button id="regbtn" type="button" class="pk-btn pk-btn-danger">立即注册</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	$('#hadsky-regbox input').keydown(function(e) {
+		if(e.keyCode == 13) {
+			$('#regbtn').click();
+		}
+	});
+
+	$('#regbtn').click(function() {
+		if(!trim(form_reg.username.value)) {
+			pktip('请填写用户名', 'warning', 1500, function() {
+				form_reg.username.focus();
+			});
+			return false;
+		}
+		if(!trim(form_reg.email.value)) {
+			pktip('请填写邮箱', 'warning', 1500, function() {
+				form_reg.email.focus();
+			});
+			return false;
+		}
+		if(!trim(form_reg.password.value)) {
+			pktip('请填写密码', 'warning', 1500, function() {
+				form_reg.password.focus();
+			});
+			return false;
+		}
+		$(this).prop('disabled', true).html('注册中...');
+		var formstring = FormDataPackaging('form[name="form_reg"]:eq(0)');
+		$.post($('form[name="form_reg"]:eq(0)').attr('action'), formstring, function(data) {
+			if(data['state'] == 'ok') {
+				pktip('注册成功，即将跳转至个人中心', 'success', 1500, function() {
+					location.href = "index.php?c=user";
+				});
+			} else {
+				$('form[name="form_reg"] input[name="verifycode"]').val('');
+				$('#verifycodeimageobject').click();
+				pktip(data['msg'] || '未知错误', 'fail', 1500, function() {
+					$('#regbtn').prop('disabled', false).html('立即注册');
+				});
+			}
+		}, 'json').error(function() {
+			//$('#regbtn').prop('disabled', false).html('立即注册');
+			$('form[name="form_reg"]').attr('action', $('form[name="form_reg"]').attr('action').replace('&return=json', ''));
+			form_reg.submit();
+		});
+	});
+
+	function uploadhead() {
+		$('#pk-dd').html('<input type="file" id="pk-file-object" value="" onchange="$(\'#uploaduserheadbox\')[0].src=getLocalFileUrl(this);$(\'#uploaduserheadbox\')[0].onload=function(){form_reg.userhead.value=ImageToBase64($(\'#uploaduserheadbox\')[0],\'150\',\'150\');}">');
+		var file = $('#pk-file-object')[0];
+		file.click();
+	}
+</script>

@@ -1,0 +1,81 @@
+<form name="form_save" method="post" action="index.php?c=app&a=superadmin:index&s=save&os={$_G['GET']['S']}&ot={$_G['GET']['T']}&table=set">
+	<div class="pk-row pk-padding-bottom-15 pk-margin-bottom-15" style="border-bottom: solid 1px #458fce;">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-primary pk-text-nowrap">基本设置</label>
+		<div class="pk-w-sm-8"></div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-nowrap">PC首页</label>
+		<div class="pk-w-sm-8">
+			<select class="pk-textbox " data-value="{$_G['SET']['DEFAULTPAGE']}" name="defaultpage">
+				<option value="home">网站首页</option>
+				<option value="forum">版块列表</option>
+				<option value="list">最新动态</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-nowrap">手机首页</label>
+		<div class="pk-w-sm-8">
+			<select class="pk-textbox " data-value="{$_G['SET']['PHONEDEFAULTPAGE']}" name="phonedefaultpage">
+				<option value="home">网站首页</option>
+				<option value="forum">版块列表</option>
+				<option value="list">最新动态</option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">手机版子域名</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="phonedomains" placeholder="仅填写子域名即可，例如m，多个用,分开" value="{htmlspecialchars($_G['SET']['PHONEDOMAINS'],ENT_QUOTES)}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">手机用户访问</label>
+		<div class="pk-w-sm-8">
+			<select class="pk-textbox " data-value="{$_G['SET']['IFPCCOMEPHONEGO']}" name="ifpccomephonego">
+				<option value="0">保持默认</option>
+				<option value="1">自动使用手机模板</option>
+				<option value="2">自动跳转至手机域名</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">文字LOGO</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="logotext" placeholder="HadSky" value="{htmlspecialchars($_G['SET']['LOGOTEXT'],ENT_QUOTES)}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">图片LOGO</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="weblogo" placeholder="图片URL" value="{htmlspecialchars($_G['SET']['WEBLOGO'],ENT_QUOTES)}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">站长寄语</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="quotes" placeholder="文字" value="{htmlspecialchars($_G['SET']['QUOTES'],ENT_QUOTES)}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">备案号</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="beianhao" placeholder="备案号" value="{htmlspecialchars($_G['SET']['BEIANHAO'],ENT_QUOTES)}">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right"></label>
+		<div class="pk-w-sm-8">
+			<button id="SubmitBtn" type="button">保存</button>
+		</div>
+	</div>
+</form>

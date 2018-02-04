@@ -1,0 +1,36 @@
+<form name="form_save" method="post" action="">
+	<div class="pk-row pk-padding-bottom-15 pk-margin-bottom-15" style="border-bottom: solid 1px #458fce;">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-primary">去除前台版权 - 高级用户专属</label>
+		<div class="pk-w-sm-8"></div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">新文字版权</label>
+		<div class="pk-w-sm-9">
+			<input class="pk-textbox" type="text" name="ptxt" value="" placeholder="建议英文不超过10个，汉字不超过8个。">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3">&nbsp;</label>
+		<div class="pk-w-sm-8">
+			<button id="dp-btn" type="button" name="submit" class="pk-btn pk-btn-success" value="yes">一键去除前台版权</button>
+		</div>
+	</div>
+</form>
+<script>
+	$('#dp-btn').click(function() {
+		$(this).prop('disabled', true).html('正在去除...');
+		var strings = FormDataPackaging('form[name="form_save"]');
+		$.getJSON('index.php?c=app&a=superadmin:index&s=home&t=deletepowered', strings, function(data) {
+			if(data['state'] == 'ok') {
+				pkalert('恭喜您，已经去掉了前台版权<br>部分没有去掉的模板请参考高级群置顶公告去除');
+			} else {
+				pkalert(data['msg'] || '未知错误');
+			}
+			$('#dp-btn').prop('disabled', false).html('一键去除前台版权');
+		}).error(function(e) {
+			console.log(e);
+		});
+	});
+</script>

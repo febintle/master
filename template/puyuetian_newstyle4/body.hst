@@ -1,0 +1,10 @@
+<div id="mainbody" class="pk-container">
+	<div id="pk-body-left" class="pk-background-color-white pk-radius-2" style="border: solid 1px #ddd;">
+		{$_G['HTMLCODE']['OUTPUT']}
+	</div>
+</div>
+<script>
+	if("{$_G['GET']['C']}"!="list"){
+		$('#mainbody>div:eq(0)').addClass('pk-padding-15');
+	}
+</script>

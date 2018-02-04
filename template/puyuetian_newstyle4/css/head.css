@@ -1,0 +1,78 @@
+body {
+	background-image: url(../img/bg.jpg);
+	background-color: #F7FBFE;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: 100% auto;
+}
+
+.newstyle4-nav {
+	border-top: solid 2px #458fce;
+	z-index: 999;
+	box-shadow: 0 2px 2px #ccc;
+	opacity: 0.9;
+}
+
+.newstyle4-nav ul {
+	list-style: none;
+}
+
+.newstyle4-nav ul li {
+	width: 11%;
+	text-align: center;
+	float: left;
+	font-size: 14px;
+	height: 100%;
+	border-bottom-left-radius: 5%;
+	border-bottom-right-radius: 5%;
+}
+
+.newstyle4-nav ul li a {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.newstyle4-nav ul li.pk-active,
+.newstyle4-nav ul li:hover {
+	background: linear-gradient(to top, #12b7f5, #458fce) !important;
+	color: #fff !important;
+}
+
+.woshixialacaidantadie2b {
+	position: fixed;
+	max-width: 240px;
+	visibility: hidden;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size: 12px;
+	background-color: #12b7f5;
+	z-index: 999;
+}
+
+.woshixialacaidantadie2b>a {
+	display: block;
+	padding: 5px 10px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 24px;
+	line-height: 24px;
+}
+
+.woshixialacaidantadie2b>a:hover {
+	color: #458fce;
+	background-color: #fff;
+}
+
+
+/*重定义系统样式*/
+
+.pk-btn-primary {
+	border: solid 1px #ddd !important;
+	background: linear-gradient(to top, #f6f8fc, #fff) !important;
+	color: #12b7f5 !important;
+}
+
+.pk-btn-primary:hover {
+	background: linear-gradient(to top, #e9f0f7, #fff) !important;
+}

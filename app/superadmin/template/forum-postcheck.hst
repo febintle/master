@@ -1,0 +1,45 @@
+<style>
+	.pk-table tr td,
+	.pk-table tr th {
+		padding-top: 0.5rem;
+		padding-bottom: .5rem;
+	}
+</style>
+
+<div class="pk-row pk-padding-bottom-15 pk-margin-bottom-15" style="border-bottom:solid 1px #458fce">
+	<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-primary">帖子审核</label>
+	<div class="pk-w-sm-8"></div>
+</div>
+
+<form name="form_del" method="post" action="index.php?c=app&a=superadmin:index&s=delete&os={$_G['GET']['S']}&ot={$_G['GET']['T']}&table={$type}">
+	<table class="pk-table pk-table-bordered pk-text-sm pk-width-all">
+		<tr class="pk-text-center pk-text-lg pk-padding-10 pk-text-primary">
+			<th colspan="99">正在审核{$nowchecktitle}</th>
+		</tr>
+		<tr class="pk-text-center pk-text-sm pk-padding-10 pk-text-primary">
+			<th colspan="99">
+				<a class="pk-hover-underline" href="index.php?c=app&a=superadmin:index&s=forum&t=postcheck&type=read">审核文章</a>
+				<a class="pk-hover-underline" href="index.php?c=app&a=superadmin:index&s=forum&t=postcheck&type=reply">审核回复</a>
+			</th>
+		</tr>
+		<tr class="pk-text-center pk-text-xs">
+			<td colspan="99">若需查看完整内容请双击内容，安全起见所有帖子被处理为HTML代码格式</td>
+		</tr>
+		<tr class="pk-text-center">
+			<th></th>
+			<th>ID</th>
+			<th>用户</th>
+			<th>标题</th>
+			<th>时间</th>
+		</tr>
+		{$outhtml}
+		<tr>
+			<th class="pk-text-left" colspan="99">
+				<input type="hidden" name="delcmd" value="0">
+				<input type="checkbox" onclick="choosecheckbox('ids[]',this.checked)"> 全选/全不选
+				<button class="pk-btn pk-btn-sm pk-btn-success " onclick="form_del.delcmd.value='0';form_del.submit()">通过</button>
+				<button class="pk-btn pk-btn-sm pk-btn-danger " onclick="form_del.delcmd.value='1';form_del.submit()">删除</button>
+			</th>
+		</tr>
+	</table>
+</form>

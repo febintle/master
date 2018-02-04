@@ -1,0 +1,245 @@
+.newstyle4-textbar {
+	height: 36px;
+	line-height: 36px;
+	padding: 0 5px;
+	background: linear-gradient(to top, #e9f0f7, #f6f8fc);
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	border: solid 1px #ddd;
+	border-bottom: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #458fce;
+}
+
+.newstyle4-textcontent {
+	background-color: #fff;
+	border: solid 1px #ddd;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	font-size: 12px;
+	padding: 5px;
+	color: #444;
+}
+
+.newstyle4-textcontent ul {
+	list-style: none;
+	padding-bottom: 6px;
+}
+
+.newstyle4-textcontent ul li:before {
+	content: "\00BB ";
+}
+
+.newstyle4-textcontent ul li {
+	display: block;
+	margin-top: 6px;
+	height: 16px;
+	line-height: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.newstyle4-textcontent a:hover {
+	color: #458fce;
+	text-decoration: underline;
+}
+
+.newstyle4-jdcontent {
+	background-color: #fff;
+}
+
+.newstyle4-jdcontent>div {
+	margin-top: 8px;
+}
+
+.newstyle4-jdcontent>div>div {
+	height: 18px;
+	line-height: 18px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(1) {
+	text-overflow: ellipsis;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(2) {
+	text-align: right;
+	text-overflow: ellipsis;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(1)>a:nth-of-type(1) {
+	color: #f60;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(1)>a:nth-of-type(1):hover {
+	text-decoration: underline;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(1)>a:nth-of-type(2) {
+	color: #333;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(1)>a:nth-of-type(2):hover {
+	text-decoration: underline;
+	color: red;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(2)>a:nth-of-type(1) {
+	color: #999;
+}
+
+.newstyle4-jdcontent>div>div:nth-of-type(2)>a:nth-of-type(1):hover {
+	text-decoration: underline;
+}
+
+.newstyle4-hotimgs {
+	background-color: #fff;
+	border: solid 1px #ddd;
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	padding-bottom: 15px;
+}
+
+.newstyle4-hotimgs img {
+	width: 100%;
+	height: 86px;
+	border: solid 1px #ddd;
+	border-radius: 2px;
+	margin-top: 15px;
+}
+
+.newstyle4-hotimgs p {
+	font-size: 12px;
+	font-weight: bold;
+	color: #333;
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.newstyle4-hotimgs p a:hover {
+	text-decoration: underline;
+}
+
+.newstyle4-bmfw {
+	background-color: #fff;
+	padding: 10px;
+	border: solid 1px #ddd;
+	border-radius: 0 0 2px 2px;
+	text-align: center;
+}
+
+.newstyle4-bmfw a {
+	display: inline-block;
+	color: #fff;
+	border-radius: 4px;
+	line-height: 27px;
+	height: 27px;
+	width: 27px;
+	text-align: center;
+	font-size: 14px;
+}
+
+.newstyle4-bmfw a:hover {
+	opacity: 0.8;
+}
+
+.newstyle4-bkbt {
+	padding:0 10px;
+	border-bottom: solid 2px #458fce;
+	height: 46px;
+	line-height: 46px;
+}
+
+.newstyle4-bkbt>div:nth-of-type(1) {
+	font-size: 18px;
+	color: #458fce;
+}
+
+.newstyle4-bkbt>div:nth-of-type(2)>a {
+	font-size: 18px;
+	color: #666;
+}
+
+.newstyle4-bkbt>div:nth-of-type(2)>a:hover {
+	text-decoration: underline;
+}
+
+.newstyle4-bktp{
+	padding: 10px 0;
+	height: 202px;
+}
+
+.newstyle4-bktp>div:nth-of-type(1)>div:nth-of-type(1) {
+	width: 100%;
+	border: solid 1px #ddd;
+	border-radius: 2px;
+	background-color: #eff;
+	cursor: pointer;
+}
+
+.newstyle4-bktp>div:nth-of-type(1)>div:nth-of-type(1):hover {
+	border: solid 1px #edd3ab;
+	background-color: #fffeee;
+}
+
+.newstyle4-bktp>div:nth-of-type(1)>div:nth-of-type(1) img {
+	width: 100%;
+	height: 158px;
+	display: block;
+}
+
+.newstyle4-bktp>div:nth-of-type(1)>div:nth-of-type(1) span {
+	display: block;
+	text-align: center;
+	color: #555;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 14px;
+}
+
+.newstyle4-bktp>div:nth-of-type(2)>ul{
+	list-style: none;
+}
+
+.newstyle4-bktp>div:nth-of-type(2)>ul li{
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 16px;
+	height: 32px;
+	line-height: 32px;
+	color: #555;
+}
+
+.newstyle4-bktp>div:nth-of-type(2)>ul li:nth-of-type(1){
+	font-size: 16px;
+	color: #cc0000;
+	height: 43px;
+	line-height: 43px;
+	text-align: center;
+}
+
+.newstyle4-bktp>div:nth-of-type(2)>ul li a:hover{
+	text-decoration: underline;
+}
+
+.newstyle4-bklb>div{
+	margin-bottom: 10px;
+}
+
+.newstyle4-bklb>div:nth-of-type(2n+1){
+	padding-left: 0;
+	padding-right: 8px;
+}
+
+.newstyle4-bklb>div:nth-of-type(2n){
+	padding-left: 8px;
+	padding-right: 0;
+}

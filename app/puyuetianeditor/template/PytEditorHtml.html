@@ -1,0 +1,340 @@
+<div id="PytEditorFrame" class="PytEditorFrame">
+	<!-- ======================= Pyt工具条生成 head ======================= -->
+	<div id="PytToolbar" class="PytToolbar"></div>
+	<!-- ======================= Pyt工具条生成 foot ======================= -->
+	<!-- ======================= Pyt编辑框生成 head ======================= -->
+	<iframe name="PytMainContent" id="PytMainContent" class="PytContent"></iframe>
+	<textarea name="PytMainContent2" id="PytMainContent2" class="PytContent" style="display: none;"></textarea>
+	<!-- ======================= Pyt编辑框生成 foot ======================= -->
+</div>
+<!-- ======================= Pyt表情生成 ======================= -->
+<div class="PytDiv Emotion pk-padding-10" style="width:230px;"></div>
+<!-- ======================= Pyt插入链接生成 ======================= -->
+<div class="PytDiv Link pk-padding-10">
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-3 pk-text-right pk-padding-top-5">链接</div>
+		<div class="pk-w-sm-9">
+			<input type="url" id="PytLinkUrl" class="pk-textbox pk-textbox-noshadow" value="http://" />
+		</div>
+	</div>
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-3 pk-text-right pk-padding-top-5">文字</div>
+		<div class="pk-w-sm-9">
+			<input type="text" id="PytLinkText" class="pk-textbox pk-textbox-noshadow" placeholder="默认" />
+		</div>
+	</div>
+	<div class="pk-row">
+		<div class="pk-w-sm-3 pk-text-right pk-padding-top-5"></div>
+		<div class="pk-w-sm-9">
+			<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertLink()">确定</button>
+			<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.Link')">取消</button>
+		</div>
+	</div>
+</div>
+<!-- ======================= Pyt插入图片生成 ======================= -->
+<div class="PytDiv Image pk-padding-10" style="width: 480px;">
+	<div class="pk-text-center pk-text-primary pk-text-lg">已上传或添加的图片</div>
+	
+	<div id="PytImagesBox" class="pk-row pk-padding-top-10 pk-margin-bottom-10" style="max-height:120px;overflow-y:auto;"></div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-9 pk-padding-right-0">
+			<input type="url" id="PytImageUrl" class="pk-textbox pk-textbox-noshadow pk-radius-top-left-4 pk-radius-bottom-left-4" placeholder="图片URL" />
+		</div>
+		<div class="pk-w-sm-3 pk-padding-left-0">
+			<button class="pk-btn pk-btn-primary pk-btn-block pk-radius-top-right-4 pk-radius-bottom-right-4" type="button" onclick="if($('#PytImageUrl').val()&&$('#PytImageUrl').val()!='http://'){$('#PytImagesBox').append('<div class=\'pk-w-sm-3 pk-margin-bottom-10\'><img class=\'pk-active\' src=\''+$('#PytImageUrl').val()+'\' onclick=\'$(this).toggleClass(&quot;pk-active&quot;)\'><\/div>');$('#PytImageUrl').val('')}">添加</button>
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<iframe name="PytIframeUploadImage" src="app/puyuetianeditor/template/upload.html?t=image" scrolling="no" frameborder="0" border="0" style="height: 32px;width: 100%;"></iframe>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-2 pk-padding-5 pk-text-right">
+			宽度
+		</div>
+		<div class="pk-w-sm-4">
+			<input type="number" id="PytImageWidth" class="pk-textbox pk-textbox-noshadow" placeholder="默认" />
+		</div>
+		<div class="pk-w-sm-2 pk-padding-5 pk-text-right">
+			高度
+		</div>
+		<div class="pk-w-sm-4">
+			<input type="number" id="PytImageHeight" class="pk-textbox pk-textbox-noshadow" placeholder="默认" />
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12 pk-text-center">
+			<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertImage()">插入选中的图片</button>&nbsp;
+			<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.Image')">取消</button>
+		</div>
+	</div>
+</div>
+<!-- ======================= Pyt插入文件生成 ======================= -->
+<div class="PytDiv File pk-padding-10">
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12">
+			<input type="url" id="PytFileUrl" class="pk-textbox pk-textbox-noshadow" placeholder="文件URL，必填" />
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12">
+			<input type="text" id="PytFileName" class="pk-textbox pk-textbox-noshadow" placeholder="文件名称，可默认" />
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<iframe name="PytIframeUploadImage" src="app/puyuetianeditor/template/upload.html?t=file" scrolling="no" frameborder="0" border="0" style="height: 32px;"></iframe>
+	</div>
+	
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12 pk-text-center">
+			<button type="button" class="pk-btn pk-btn-success" onclick="PytInsertRemoteFile()">远程文件链接</button>
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12">下载附件消耗：</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-2 pk-padding-5 pk-text-right">
+			<span id="PytTiandouName">天豆</span>
+		</div>
+		<div class="pk-w-sm-4">
+			<input type="number" id="PytFileTiandou" class="pk-textbox pk-textbox-noshadow" placeholder="0" />
+		</div>
+		<div class="pk-w-sm-2 pk-padding-5 pk-text-right">
+			<span id="PytJifenName">积分</span>
+		</div>
+		<div class="pk-w-sm-4">
+			<input type="number" id="PytFileJifen" class="pk-textbox pk-textbox-noshadow" placeholder="0" />
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12 pk-text-center">
+			<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertFile()">插入</button>
+			<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.File')">取消</button>
+		</div>
+	</div>
+</div>
+<!-- ======================= Pyt插入代码生成 ======================= -->
+<div class="PytDiv Code pk-padding-10" style="width: 480px;">
+	<div class="pk-text-center">
+		<textarea id="PytCodeTextarea" placeholder="请在此键入代码后点击插入" class="pk-textarea pk-width-all" rows="10"></textarea>
+	</div>
+	<div class="pk-text-center pk-padding-top-10">
+		<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertCode()">插入</button>
+		<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.Code')">取消</button>
+	</div>
+</div>
+<!-- ======================= Pyt我的文件生成 ======================= -->
+<div class="PytDiv Myfiles pk-padding-10" style="width: 720px;">
+	<div class="pk-text-center">
+		<table class="pk-table pk-table-bordered pk-width-all">
+			<thead>
+				<tr>
+					<th>文件</th>
+					<th>类型</th>
+					<th>时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="99" class="pk-text-center pk-text-sm">
+						<a class="pk-text-primary pk-hover-underline" href="javascript:" onclick="PytMyfilesGetPage('syy')">上一页</a>
+						<span>1</span>
+						<a class="pk-text-primary pk-hover-underline" href="javascript:" onclick="PytMyfilesGetPage('xyy')">下一页</a>
+						<a class="pk-text-primary pk-hover-underline" href="javascript:" onclick="PytSH('.PytDiv.Myfiles')">关闭</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</div>
+<script>
+	$(function() {
+		PytMyfilesGetPage(1);
+	});
+
+	function PytMyfilesGetPage($page) {
+		$('.PytDiv.Myfiles table tbody').html('');
+		var cpage = parseInt($('.PytDiv.Myfiles table tfoot tr td span').html());
+		if($page == 'syy') {
+			cpage > 1 ? $page = cpage - 1 : $page = 1;
+		} else if($page == 'xyy') {
+			$page = cpage + 1;
+		}
+		$('.PytDiv.Myfiles table tfoot tr td span').html($page);
+		$.getJSON('index.php?c=app&a=puyuetianeditor:index&s=myfiles&page=' + $page, function(result) {
+			$.each(result, function(i, field) {
+				var yl, cr;
+				if(field.target == 'image') {
+					yl = "pkalert('<div class=\\'pk-text-center\\'><img class=\\'pk-cursor-pointer\\' src=\\'" + field.url + "\\' onclick=window.open(this.src,\\'_blank\\') style=\\'max-width:100%;max-height:300px\\' title=\\'点击查看大图\\'></div>','图片预览')";
+					cr = "$('#PytImageUrl').val('" + field.url + "');PytSH('.PytDiv.Image')";
+				} else if(field.target == 'music') {
+					yl = "pkalert('<div class=\\'pk-text-center\\'><audio controls><source src=\\'" + field.url + "\\' type=\\'audio/mp3\\'><embed src=\\'" + field.url + "\\' type=\\'audio/mp3\\'></audio></div>','音乐预览')";
+					cr = "$('#PytMusicUrl').val('" + field.url + "');PytSH('.PytDiv.Music')";
+				} else if(field.target == 'video') {
+					yl = "pkalert('<div class=\\'pk-text-center\\'><video src=\\'" + field.url + "\\' controls style=\\'max-width:100%;max-height:300px\\'></video></div>','视频预览')";
+					cr = "$('#PytVideoUrl').val('" + field.url + "');PytSH('.PytDiv.Video')";
+				} else if(field.target == 'file') {
+					yl = "window.open('index.php?c=app&a=puyuetianeditor:index&s=showfile&id=" + field.id + "','_blank')";
+					cr = "$('#PytLinkUrl').val('index.php?c=app&a=puyuetianeditor:index&s=showfile&id=" + field.id + "');PytSH('.PytDiv.Link')";
+				} else {
+					yl = "pkalert('无预览')";
+				}
+				if(!field.name)
+					field.name = '未命名';
+				if(field.datetime.length == 14) {
+					field.datetime = field.datetime.substr(0, 4) + '-' + field.datetime.substr(4, 2) + '-' + field.datetime.substr(6, 2) + ' ' + field.datetime.substr(8, 2) + ':' + field.datetime.substr(10, 2) + ':' + field.datetime.substr(12);
+				}
+				$('.PytDiv.Myfiles table tbody').append('<tr><td><div class="pk-text-truncate" style="max-width:240px">' + field.name + '</div></td><td>' + field.target + '</td><td>' + field.datetime + '</td><td><a target="_blank" class="pk-btn pk-btn-sm pk-btn-success" href="javascript:" onclick="' + yl + '">预览</a>&nbsp;&nbsp;<a class="pk-btn pk-btn-sm pk-btn-success" href="javascript:" onclick="' + cr + '">插入</a></td></tr>');
+			});
+		});
+	}
+</script>
+<!-- ======================= Pyt插入回复可见生成 ======================= -->
+<div class="PytDiv Replylook pk-padding-10" style="width: 480px;">
+	<div class="pk-text-center">
+		<textarea id="PytReplylookTextarea" placeholder="请在此键入回复后可查看的内容" class="pk-textarea pk-width-all" rows="10"></textarea>
+	</div>
+	<div class="pk-text-center pk-padding-top-10">
+		<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertReplylook()">插入</button>
+		<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.Replylook')">取消</button>
+	</div>
+</div>
+<!-- ======================= Pyt插入视频生成 ======================= -->
+<div class="PytDiv Video pk-padding-10">
+	<div class="pk-text-center pk-margin-bottom-10">
+		<input type="text" id="PytVideoUrl" placeholder="视频地址/代码" class="pk-textbox pk-textbox-noshadow">
+	</div>
+
+	<div id="PytDivUploadVideo" class="pk-row pk-margin-bottom-10">
+		<iframe name="PytIframeUploadVideo" src="app/puyuetianeditor/template/upload.html?t=video" scrolling="no" frameborder="0" border="0" style="height: 32px;"></iframe>
+		<div class="pk-text-center">
+			<input type="checkbox" name="PytVideoAutoplay" value="1">自动播放 宽度
+			<input type="text" name="PytVideoWidth" value="" class="pk-textbox pk-textbox-noshadow" placeholder="默认" style="width: 45px;display: inline-table;"> 高度
+			<input type="text" name="PytVideoHeight" value="" class="pk-textbox pk-textbox-noshadow" placeholder="默认" style="width: 45px;display: inline-table;">
+		</div>
+	</div>
+
+	<div class="pk-text-center">
+		<input type="radio" name="PytVideoRadio" value="video" onclick="$('#PytVideoType').val(this.value);$('#PytDivUploadVideo').show()" checked>手机视频
+		<input type="radio" name="PytVideoRadio" value="html" onclick="$('#PytVideoType').val(this.value);$('#PytDivUploadVideo').hide()">通用/html代码
+		<input type="radio" name="PytVideoRadio" value="flash" onclick="$('#PytVideoType').val(this.value);$('#PytDivUploadVideo').hide()">flash地址
+	</div>
+	<input type="hidden" id="PytVideoType" value="video" />
+	<div class="pk-text-center pk-padding-top-10">
+		<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertVideo()">插入</button>
+		<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.Video')">取消</button>
+	</div>
+</div>
+<!-- ======================= Pyt插入音乐生成 ======================= -->
+<div class="PytDiv Music pk-padding-10">
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12">
+			<input type="url" id="PytMusicUrl" class="pk-textbox pk-textbox-noshadow" placeholder="音乐URL" />
+		</div>
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<iframe name="PytIframeUploadMusic" src="app/puyuetianeditor/template/upload.html?t=music" scrolling="no" frameborder="0" border="0" style="height: 32px;"></iframe>
+	</div>
+
+	<div class="pk-text-center pk-margin-bottom-10">
+		<input type="checkbox" name="PytMusicAutoplay" value="1">自动播放
+		<input type="checkbox" name="PytMusicLoop" value="1">自动循环
+	</div>
+
+	<div class="pk-row pk-margin-bottom-10">
+		<div class="pk-w-sm-12 pk-text-center">
+			<button type="button" class="pk-btn pk-btn-primary" onclick="PytInsertMusic()">插入</button>
+			<button type="button" class="pk-btn pk-btn-default" onclick="PytSH('.PytDiv.Music')">取消</button>
+		</div>
+	</div>
+</div>
+<!-- ======================= Pyt无刷新驱动框架 ======================= -->
+<iframe name="PytIframeDrive" style="display: none;"></iframe>
+
+<div id="PytToolbarBtns" class="pk-hide">
+	<div><span id="PytHtmlBtn" title="HTML源码" onclick="PytLookHtml()"></span></div>
+	<div><span id="PytBoldBtn" title="粗体" onclick="PytCmd('bold')"></span></div>
+	<div><span id="PytItalicBtn" title="斜体" onclick="PytCmd('italic')"></span></div>
+	<div><span id="PytUnderlineBtn" title="下划线" onclick="PytCmd('underline')"></span></div>
+	<div><span id="PytStrikethroughBtn" title="删除线" onclick="PytCmd('strikethrough')"></span></div>
+	<div><span id="PytRemovemarksBtn" title="清除格式" onclick="PytRemoveMarks()"></span></div>
+	<div>
+		<select id="PytFontnameBtn" onchange="if(this.value!='')PytCmd('fontname','',this.value);this.value=''">
+			<option value="">字体样式</option>
+			<option value="simsun">宋体</option>
+			<option value="simhei">黑体</option>
+			<option value="microsoft yahei">雅黑</option>
+			<option value="nsimsun">新宋体</option>
+			<option value="kaiti">楷体</option>
+			<option value="youyuan">幼圆</option>
+			<option value="lisu">隶书</option>
+		</select>
+	</div>
+	<div>
+		<select id="PytFontsizeBtn" onchange="if(this.value!='')PytCmd('fontsize','',this.value);this.value=''">
+			<option value="">字体大小</option>
+			<option value="1">12px</option>
+			<option value="2">14px</option>
+			<option value="3">16px</option>
+			<option value="4">18px</option>
+			<option value="5">24px</option>
+			<option value="6">32px</option>
+			<option value="7">48px</option>
+		</select>
+	</div>
+	<div>
+		<select id="PytForecolorBtn" onchange="if(this.value!='')PytCmd('forecolor','',this.value);this.value=''">
+			<option value="">字体颜色</option>
+			<option value="#333333" style="color:#333333">默认</option>
+			<option value="#458fce" style="color:#458fce">Pyt蓝色</option>
+			<option value="#12b7f5" style="color:#12b7f5">Pyt浅蓝</option>
+			<option value="#66CC66" style="color:#66CC66">Pyt绿色</option>
+			<option value="#CC6666" style="color:#CC6666">Pyt红色</option>
+			<option value="#FFCC66" style="color:#FFCC66">Pyt橙色</option>
+			<option value="#FFFFFF">白色</option>
+			<option value="transparent">透明</option>
+		</select>
+	</div>
+	<div>
+		<select id="PytBackcolorBtn" onchange="if(this.value!='')PytCmd('backcolor','',this.value);this.value=''">
+			<option value="">文字背景</option>
+			<option value="#333333" style="color:#333333">默认</option>
+			<option value="#458fce" style="color:#458fce">Pyt蓝色</option>
+			<option value="#12b7f5" style="color:#12b7f5">Pyt浅蓝</option>
+			<option value="#66CC66" style="color:#66CC66">Pyt绿色</option>
+			<option value="#CC6666" style="color:#CC6666">Pyt红色</option>
+			<option value="#FFCC66" style="color:#FFCC66">Pyt橙色</option>
+			<option value="#FFFFFF">白色</option>
+			<option value="transparent">透明</option>
+		</select>
+	</div>
+	<div><span id="PytJustifyleftBtn" title="居左" onclick="PytCmd('justifyleft')"></span></div>
+	<div><span id="PytJustifycenterBtn" title="居中" onclick="PytCmd('justifycenter')"></span></div>
+	<div><span id="PytJustifyrightBtn" title="居右" onclick="PytCmd('justifyright')"></span></div>
+	<div><span id="PytLinkBtn" title="链接" onclick="PytSH('.PytDiv.Link')"></span></div>
+	<div><span id="PytUnlinkBtn" title="取消链接" onclick="PytCmd('unlink')"></span></div>
+	<div><span id="PytEmotionBtn" title="表情" onclick="PytSH('.PytDiv.Emotion')"></span></div>
+	<div><span id="PytImageBtn" title="图片,支持多图上传" onclick="PytSH('.PytDiv.Image')"></span></div>
+	<div><span id="PytVideoBtn" title="视频" onclick="PytSH('.PytDiv.Video')"></span></div>
+	<div><span id="PytMusicBtn" title="音乐" onclick="PytSH('.PytDiv.Music')"></span></div>
+	<div><span id="PytFileBtn" title="附件" onclick="PytSH('.PytDiv.File')"></span></div>
+	<div><span id="PytMyfilesBtn" title="我的文件" onclick="PytSH('.PytDiv.Myfiles')"></span></div>
+	<div><span id="PytCodeBtn" title="代码" onclick="PytSH('.PytDiv.Code')"></span></div>
+	<div><span id="PytReplylookBtn" title="内容隐藏，回复后可见" onclick="PytSH('.PytDiv.Replylook')"></span></div>
+	<div><span id="PytUndoBtn" title="撤销" onclick="PytCmd('undo')"></span></div>
+	<div><span id="PytRedoBtn" title="重复" onclick="PytCmd('redo')"></span></div>
+</div>

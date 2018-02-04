@@ -1,0 +1,151 @@
+<link rel="stylesheet" href="template/puyuetian_newstyle4/css/list-1.css" />
+<div id="listmaindiv" class="pk-row">
+	<div class="pk-w-md-3 pk-padding-0 pk-height-all" style="border-right: solid 1px #ddd;">
+		{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_LISTADV1']}
+		<div class="pk-text-sm pk-text-center newstyle4-listbt">
+			<a href="javascript:" onclick="clickshow(this)">推荐文章&nbsp;<span class="fa fa-caret-up"></span></a>
+		</div>
+		<div class="pk-row pk-overflow-hidden newstyle4-tjwz" data-height="">
+			<ul>
+				{$_G['TEMP']['WZHTML']}
+			</ul>
+		</div>
+		<div class="pk-text-sm pk-text-center newstyle4-listbt">
+			<a href="javascript:" onclick="clickshow(this)">子版块&nbsp;<span class="fa fa-caret-up"></span></a>
+		</div>
+		<div class="pk-row pk-overflow-hidden" data-height="">
+			{$_G['TEMP']['CFHTML']}
+		</div>
+		<div class="pk-text-sm pk-text-center newstyle4-listbt">
+			<a href="javascript:" onclick="clickshow(this)">版主&nbsp;<span class="fa fa-caret-up"></span></a>
+		</div>
+		<div class="pk-row pk-overflow-hidden" data-height="">
+			<div class="pk-row" style="border-bottom: solid 1px #ddd;">
+				{$_G['TEMP']['BZS']}
+			</div>
+		</div>
+		{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_LISTADV2']}
+	</div>
+	<div class="pk-w-md-9 pk-padding-0">
+		<div class="pk-row pk-text-sm pk-text-default" style="border-bottom: solid 1px #ddd;background-color: #F2F2F2;height: 48px;line-height: 45px;">
+			<div id="listbtns" class="pk-w-md-7 pk-text-nowrap">
+				<a class="pk-btn pk-btn-sm pk-radius-4" href="{ReWriteURL('list','sortid={$sortid}&page=1','type=&order=posttime')}"><span class="fa fa-file-text-o">&nbsp;</span>新文章</a>
+				<a class="pk-btn pk-btn-sm pk-radius-4" href="{ReWriteURL('list','type=high&sortid={$sortid}&page=1')}"><span class="fa fa-diamond">&nbsp;</span>精华帖</a>
+				<a class="pk-btn pk-btn-sm pk-radius-4" href="{ReWriteURL('list','sortid={$sortid}&page=1','type=&order=activetime')}"><span class="fa fa-reply">&nbsp;</span>新回复</a>
+			</div>
+			<div class="pk-w-md-5 pk-text-xs pk-text-right pk-text-nowrap" style="color: #777;">
+				今日：<span class="pk-text-danger">{$_G['TEMP']['TODAYCOUNT']}</span>&nbsp;&nbsp;&nbsp;&nbsp;总帖：<span class="">{$_G['TEMP']['READCOUNT']}</span>
+			</div>
+		</div>
+		<script>
+			if($_GET('type') == 'high' && !$_GET('order')) {
+				$('#listbtns>a:eq(1)').attr('disabled', true);
+			} else if($_GET('order') == 'posttime') {
+				$('#listbtns>a:eq(0)').attr('disabled', true);
+			} else if($_GET('order') == 'activetime') {
+				$('#listbtns>a:eq(2)').attr('disabled', true);
+			}
+
+			function clickshow(This) {
+				var $t = $(This).parent().next();
+				var $h = $($t).outerHeight();
+				//alert($t.html());
+				if($h) {
+					$($t).data('height', $h);
+					$($t).animate({
+						'height': '0px'
+					});
+				} else {
+					$($t).animate({
+						'height': $($t).data('height') + 'px'
+					});
+				}
+				$(This).children('span').toggleClass('fa-caret-up').toggleClass('fa-caret-down');
+			}
+		</script>
+		<style>
+			#forumlabel {
+				padding: 10px;
+				padding-top: 5px;
+			}
+			
+			#forumlabel:before,
+			#forumlabel:after {
+				content: " ";
+				display: table;
+			}
+			
+			#forumlabel:after {
+				clear: both;
+			}
+			
+			#forumlabel>a {
+				float: left;
+				padding: 2px 5px;
+				border: solid 1px #777;
+				border-radius: 2px;
+				font-size: 12px;
+				margin-left: 5px;
+				margin-top: 5px;
+				color: #777;
+			}
+			
+			#forumlabel>a.pk-active {
+				background-color: #999;
+				color: white !important;
+				border: solid 1px #999 !important;
+			}
+			
+			#forumlabel>a:hover {
+				opacity: 0.8;
+			}
+		</style>
+		<div class="pk-row">{$_G['TEMP']['LABELSHTML']}</div>
+		<script>
+			if($('#forumlabel').html()) {
+				//primary,secondary,warning,danger,success
+				var $cs = ["#458fce", "#12b7f5", "#FFCC66", "#CC6666", "#66CC66"];
+				var $as = $('#forumlabel>a');
+				var $i = 0;
+				for(var i = 0; i < $as.length; i++) {
+					$($as[i]).css({
+						"color": $cs[$i],
+						"border-color": $cs[$i]
+					});
+					$i < 4 ? $i++ : $i = 0;
+					//当前选中的东西
+					var $labels = decodeURIComponent($_GET('label'));
+					if($labels) {
+						$labels = $labels.split(',');
+						for(var ii = 0; ii < $labels.length; ii++) {
+							if($labels[ii] == $($as[i]).html() && $labels[ii]) {
+								$($as[i]).addClass('pk-active');
+							}
+						}
+					}
+				}
+				$('#forumlabel>a').click(function() {
+					var $label = '';
+					$(this).toggleClass('pk-active');
+					var $url = location.href;
+					var $as = $('#forumlabel>a');
+					for(var i = 0; i < $as.length; i++) {
+						if($($as[i]).hasClass('pk-active')) {
+							$label += ',' + $($as[i]).html();
+						}
+					}
+					$label = $label.substr(1);
+					//去除现有的label
+					$url = $url.replace('&label=' + $_GET('label'), '');
+					$url = $url.replace('?label=' + $_GET('label'), '');
+					if($url.indexOf('?') == -1) {
+						$url = $url + '?label=' + encodeURIComponent($label);
+					} else {
+						$url = $url + '&label=' + encodeURIComponent($label);
+					}
+					location.href = $url;
+				});
+			}
+		</script>
+		<div id="read-list" class="pk-padding-left-15 pk-padding-right-15">
+			<div>

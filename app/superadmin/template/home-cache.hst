@@ -1,0 +1,63 @@
+<form name="form_save" method="post" action="index.php?c=app&a=superadmin:index&s=savecache">
+	<div class="pk-row pk-padding-bottom-15 pk-margin-bottom-15" style="border-bottom:solid 1px #458fce">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-primary">全局缓存</label>
+		<div class="pk-w-sm-8"></div>
+	</div>
+	
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">缓存页面</label>
+		<div class="pk-w-sm-8">
+			<input class="pk-textbox " type="text" name="cachepages" value="{strtolower(HADSKY_CACHEPAGES)}" placeholder="多个页面用,分开" title="多个页面用,分开">
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-5">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">缓存周期</label>
+		<div class="pk-w-sm-4">
+			<input id="cachelife" class="pk-textbox " type="number" name="cachelife" value="{Cnum(HADSKY_CACHELIFE)}" placeholder="单位秒，每隔N秒更新一次缓存，留空或填0为不开启" title="单位秒，每隔N秒更新一次缓存，留空或填0为不开启">
+		</div>
+		<div class="pk-w-sm-4 pk-padding-top-5 pk-text-bold">秒</div>
+	</div>
+	<div class="pk-row pk-padding-bottom-5">
+		<label class="pk-w-sm-3">&nbsp;</label>
+		<div class="pk-w-sm-8">
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('0')">关闭</button>
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('3600')">1小时</button>
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('7200')">2小时</button>
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('14400')">4小时</button>
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('28800')">8小时</button>
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('43200')">12小时</button>
+			<button type="button" class="pk-btn pk-btn-default pk-btn-sm " onclick="$('#cachelife').val('86400')">1天</button>
+		</div>
+	</div>
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3">&nbsp;</label>
+		<div class="pk-w-sm-8 pk-text-sm">
+			小型论坛无需开启；论坛规模较大可开启该功能，推荐2小时
+		</div>
+	</div>
+	
+	<div class="pk-row pk-padding-bottom-5">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right">允许参数更新</label>
+		<div class="pk-w-sm-8">
+			<select class="pk-textbox " data-value="{Cnum(HADSKY_CACHEREFRESH)}" name="cacherefresh">
+				<option value="0">关闭</option>
+				<option value="1">开启</option>
+			</select>
+		</div>
+	</div>
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3">&nbsp;</label>
+		<div class="pk-w-sm-8 pk-text-sm">
+			前台可以通过get参数cache=refresh来更新当前页的缓存，适用于需要立即看见回复信息的站点
+		</div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right"></label>
+		<div class="pk-w-sm-8">
+			<button id="SubmitBtn" type="button">保存</button>
+			<button type="button" onclick="location.href='index.php?c=app&a=superadmin:index&s=savecache&do=refresh&chkcsrfval={$_G['CHKCSRFVAL']}';this.disabled=true" class="pk-btn pk-btn-danger">更新缓存</button>
+		</div>
+	</div>
+</form>

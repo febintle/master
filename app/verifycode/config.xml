@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<app>
+	<name>验证码插件</name>
+	<version>v3.0.0.20170416</version>
+	<users>1</users>
+	<author>puyuetian</author>
+	<link>http://www.hadsky.com</link>
+	<description>论坛基本验证码驱动插件。</description>
+</app>

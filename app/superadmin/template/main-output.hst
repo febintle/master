@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>HadSky Superadmin Output Hst</title>
+		<meta name="author" content="puyuetian qq632827168">
+		<meta name="website" content="http://www.hadsky.com">
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+		<link rel="stylesheet" href="template/puyuetianUI/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="template/puyuetianUI/css/puyuetian.css" />
+		<script src="template/puyuetianUI/js/jquery-1.12.4.js"></script>
+		<script src="template/puyuetianUI/js/puyuetian.js"></script>
+		<!--[if lt IE 9]>
+			<script src="template/puyuetianUI/js/respond.js"></script>
+		<![endif]-->
+		{$_G['SET']['EMBED_HEADMARKS']}
+		<link rel="stylesheet" href="app/superadmin/template/css/main-output.css" />
+		<script src="app/superadmin/template/js/main-output.js"></script>
+	</head>
+
+	<body>
+		<div id="backandrefreshdiv" class="pk-row pk-margin-bottom-15" style="border-bottom:solid 1px #09f">
+			<div class="pk-w-sm-6 pk-text-left pk-padding-0">
+				<button id="app-superadmin-backbtn" type="button" class="pk-btn pk-btn-secondary pk-hide" style="background-color:#09f" onclick="history.back()"><span class="fa fa-fw fa-chevron-left"></span>返回</button>
+				&nbsp;
+			</div>
+			<div class="pk-w-sm-6 pk-text-right pk-padding-0">
+				&nbsp;
+				<button type="button" class="pk-btn pk-btn-secondary" style="background-color:#09f" onclick="location.reload()"><span class="fa fa-fw fa-refresh"></span>刷新</button>
+			</div>
+		</div>
+		{$contenthtml}
+		<div class="pk-hide">HadSky后台驱动模块</div>
+	</body>
+
+</html>

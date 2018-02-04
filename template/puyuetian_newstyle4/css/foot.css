@@ -1,0 +1,19 @@
+.newstyle4-foot a {
+	display: inline-block;
+	padding: 0 10px;
+	border-right: solid 1px #458fce;
+	color: #458fce;
+}
+
+.newstyle4-foot a:hover {
+	text-decoration: underline;
+}
+
+.newstyle4-foot a:nth-last-of-type(1) {
+	color: #555;
+	border-right: none;
+}
+
+.newstyle4-foot a:nth-last-of-type(1):hover {
+	text-decoration: none;
+}

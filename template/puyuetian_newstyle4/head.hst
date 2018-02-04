@@ -1,0 +1,190 @@
+<link rel="stylesheet" href="template/puyuetian_newstyle4/css/head.css" />
+<div class="newstyle4-nav pk-row pk-position-fixed pk-width-all pk-background-color-white pk-overflow-hidden" style="top:0;left:0;height:89px;" onmouseleave="newstyle4switchnav('leave')">
+	<div class="pk-container">
+		<div class="pk-row pk-overflow-hidden" style="height:87px;">
+			<div class="pk-w-sm-3 pk-padding-0 pk-text-center" style="height:72px;line-height:72px">
+				<a href="index.php" title="{$_G['SET']['LOGOTEXT']}"><img src="{$_G['SET']['WEBLOGO']}" style="max-width:92%;" alt="{$_G['SET']['LOGOTEXT']}" /></a>
+			</div>
+			<div class="pk-w-sm-8 pk-padding-0" style="height:72px;line-height:72px">
+				<ul>{$_G['SET']['NAVHTMLCODE']}</ul>
+			</div>
+			<div class="pk-w-sm-1 pk-text-right pk-padding-right-0" style="height:72px;padding-top:20px;" onmouseenter="newstyle4switchnav();this.onmouseenter=''">
+				<a href="{ReWriteURL('user','')}" title="个人设置">
+					<img class="pk-radius-all pk-display-inline" src="userhead/{Cnum($_G['USER']['ID'])}.png" onerror="this.src='userhead/upload.png';this.onerror=''" style="width:32px;height:32px;margin-right:20px;" />
+				</a>
+				<a class="pk-position-absolute" href="javascript:" style="top: 25px;right: 5px;">
+					<span class="fa fa-caret-down"></span>
+				</a>
+				<a id="messagecount" class="pk-radius-all pk-background-color-danger pk-text-white pk-position-absolute pk-text-center forumtodaycount" href="index.php?c=friends" style="width: 16px;height: 16px;line-height:16px;font-size: 8px;right:11px;top:11px;" title="{$_G['USERMESSAGE']['UNREADCOUNT']}条未读消息">{Cnum($_G['USERMESSAGE']['UNREADCOUNT'],99,TRUE,0,99)}</a>
+			</div>
+		</div>
+		<div class="pk-row pk-overflow-hidden" style="height:67px;padding-top:10px;padding-bottom:10px;">
+			<div class="pk-w-sm-8 pk-text-sm pk-text-default pk-text-nowrap pk-overflow-hidden" style="height:32px;line-height:32px"></div>
+			<div class="pk-w-sm-4 pk-padding-0" style="height:32px;line-height:32px">
+				<form method="get" action="index.php">
+					<input type="hidden" name="c" value="app" />
+					<input type="hidden" name="a" value="puyuetian_search:index" />
+					<div class="pk-row">
+						<div class="pk-w-sm-9 pk-padding-right-0">
+							<input type="search" name="w" class="pk-textbox pk-textbox-noshadow pk-border-right-none pk-radius-top-left-2 pk-radius-bottom-left-2" value="{htmlspecialchars($_GET['w'])}" placeholder="搜索，就是这么简单~" required style="border:solid 1px #ddd;" />
+						</div>
+						<div class="pk-w-sm-3 pk-padding-left-0 pk-padding-right-5">
+							<button type="submit" class="pk-btn pk-btn-block pk-btn-primary pk-radius-bottom-right-2 pk-text-sm pk-radius-top-right-2">搜&nbsp;索</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="pk-row pk-overflow-hidden">
+			<div class="pk-w-sm-12 pk-text-default pk-text-xs pk-text-center" style="height:32px;line-height:32px;">{$_G['SET']['QUOTES']}</div>
+		</div>
+		<div class="pk-row pk-overflow-hidden">
+			<div class="pk-w-sm-12">{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_NAVADV']}</div>
+		</div>
+	</div>
+</div>
+<div style="height: 104px;">&nbsp;</div>
+<div id="gpsdiv" class="pk-container pk-hide">
+	<div class="pk-row pk-margin-bottom-15 pk-text-sm pk-background-color-white pk-radius-2" style="border: solid 1px #ddd;">
+		<div class="pk-w-sm-12 pk-text-truncate" style="height: 44px;line-height: 44px;color: #777;">
+			<div class="pk-w-sm-8 pk-text-left pk-padding-0"><span class="fa fa-home pk-text-sm"></span>
+			<a class="pk-hover-underline" href="index.php">首页</a>{$_G['TEMP']['GPSHTML']}</div>
+			<div class="pk-w-sm-4 pk-text-right pk-padding-0">
+				<a class="pk-btn pk-btn-primary pk-btn-sm pk-radius-4" href="index.php?c=edit&type=read&sortid={$sortid}">发布新文章</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="bbsactivediv" class="pk-container pk-hide">
+	<div class="pk-row pk-padding-top-10 pk-padding-bottom-10 pk-text-default pk-text-xs">
+		<div id="nowtime" class="pk-w-md-9 pk-padding-left-5">
+			昨日:<span class="pk-text-primary">{$_G['SET']['YESTODAYPOSTRR']}</span>篇&nbsp;&nbsp;今日:<span class="pk-text-primary">{$_G['SET']['TODAYPOSTRR']}</span>篇 &nbsp;&nbsp;总帖:<span class="pk-text-primary">{$_G['SET']['SUMPOSTRR']}</span>篇 &nbsp;&nbsp;会员:<span class="pk-text-primary">{$_G['SET']['MEMBERCOUNT']}</span>位
+		</div>
+		<div class="pk-w-md-3 pk-text-right pk-padding-right-5">
+			<a class="pk-text-primary pk-hover-underline" href="index.php?c=edit&type=read">发布新文章</a>
+		</div>
+	</div>
+</div>
+<script>
+	//导航自动更多
+	var $navas = $('.newstyle4-nav ul li');
+	if($navas.length > 9) {
+		var $navhtml = '',
+			$navdivhtml = '<div class="woshixialacaidantadie2b" style="min-width:72px;border-bottom-left-radius: 5%;border-bottom-right-radius: 5%;">';
+		for(var $i = 0; $i < $navas.length; $i++) {
+			if($i < 8) {
+				$navhtml += '<li>' + $($navas[$i]).html() + '</li>';
+			} else {
+				$navdivhtml += $($navas[$i]).html();
+			}
+		}
+		$navdivhtml += '</div>';
+		$navhtml += '<li class="pk-cursor-pointer" id="woshixialacaidan2b" onmouseenter="$(\'.woshixialacaidantadie2b\').css(\'visibility\', \'visible\')" onmouseleave="$(\'.woshixialacaidantadie2b\').css(\'visibility\', \'hidden\')" style="border-radius:0px;width:72px">更多...' + $navdivhtml + '</li>';
+		$('.newstyle4-nav ul').html($navhtml);
+		$navhtml = '';
+		$navdivhtml = '';
+	}
+
+	//选择当前导航
+	$navas = $('.newstyle4-nav ul li a');
+	for(var $i = 0; $i < $navas.length; $i++) {
+		if($navas[$i].href == location.href) {
+			$($navas[$i]).parent().addClass('pk-active');
+		}
+	}
+
+	//首页展示论坛动态，其他展示gps
+	if("{$_G['GET']['C']}" == "home" || ("{$_G['GET']['C']}" == "" && "{$_G['SET']['DEFAULTPAGE']}" == "home")) {
+		$('#bbsactivediv').removeClass('pk-hide');
+	} else {
+		$('#gpsdiv').removeClass('pk-hide');
+	}
+
+	//加载用户信息
+	var $navuserdiv = $('.newstyle4-nav>div:eq(0)>div:eq(1)>div:eq(0)');
+	if(parseInt($_USER['ID']) > 0) {
+		$('.newstyle4-nav>div:eq(0)>div:eq(2)>div:eq(0)').html('&nbsp;' + $_USER['SIGN'] + '&nbsp;');
+		var html = '';
+		//昵称
+		html += '<a class="pk-hover-underline pk-text-bold" href="index.php?c=user">' + $_USER['NICKNAME'] + '</a>(<span class="pk-text-primary">Lv' + parseInt(parseInt($_USER['JIFEN']) / 100) + '</span>)&nbsp;&nbsp;';
+		//性别
+		if($_USER['SEX'] == 'b') {
+			html += '<span class="pk-text-primary fa fa-mars"></span>&nbsp;';
+		} else if($_USER['SEX'] == 'g') {
+			html += '<span class="pk-text-danger fa fa-venus"></span>&nbsp;';
+		} else {
+			html += '<span class="pk-text-default fa fa-intersex"></span>&nbsp;';
+		}
+		//年龄
+		if($_USER['BIRTHDAY'].length == 8) {
+			var date = new Date();
+			html += date.getFullYear() - $_USER['BIRTHDAY'].substr(0, 4) + '岁&nbsp;&nbsp;';
+		} else {
+			html += '0岁&nbsp;&nbsp;';
+		}
+		//积分，天豆
+		html += '<span class="pk-text-danger">{$_G["SET"]["TIANDOUNAME"]}:' + $_USER['TIANDOU'] + '</span>&nbsp;&nbsp;';
+		//消息图标
+		html += '<a class="pk-btn pk-btn-xs pk-radius-4 pk-btn-warning" href="index.php?c=friends" title="消息中心"><span class="fa fa-envelope"></span>&nbsp;消息</a>&nbsp;&nbsp;';
+		//退出图标
+		html += '<a class="pk-btn pk-btn-xs pk-radius-4 pk-btn-danger" href="javascript:" onclick="pkalert(\'确认退出当前用户的登录？\',\'提示\',\'location.href=\\\'index.php?c=login&type=out\\\'\')" title="退出登录"><span class="fa fa-sign-out"></span>&nbsp;退出</a>&nbsp;&nbsp;';
+		//后台图标
+		if($_USER['ID'] == 1) {
+			html += '<a target="_blank" class="pk-btn pk-btn-xs pk-radius-4 pk-btn-danger" href="index.php?c=app&a=superadmin:index" title="后台管理"><span class="fa fa-gear"></span>&nbsp;后台</a>&nbsp;&nbsp;';
+		}
+		$($navuserdiv).html(html);
+	} else {
+		$($navuserdiv).html('游客，您好！您可以<a class="pk-text-primary pk-hover-underline" href="{ReWriteURL("login","","referer=".urlencode($_G["SYSTEM"]["LOCATION"]))}">登录</a>或<a class="pk-text-primary pk-hover-underline" href="{ReWriteURL("reg","","referer=".urlencode($_G["SYSTEM"]["LOCATION"]))}">注册</a>');
+	}
+
+	//若无新消息，隐藏消息数量
+	if(!parseInt($('#messagecount').html())) {
+		$('#messagecount').addClass('pk-hide');
+	}
+
+	//是否是显示本地时间的模式
+	if("{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_ACTIVESHOW']}" == "1") {
+		function return0(str) {
+			if(str < 10) {
+				return '0' + str;
+			} else {
+				return str;
+			}
+		}
+		$('#nowtime').html('Loading...');
+		setInterval(function() {
+			var date = new Date();
+			var $day = ['日', '一', '二', '三', '四', '五', '六'];
+			var $nowtime = date.getFullYear() + '年' + return0(date.getMonth() + 1) + '月' + return0(date.getDate()) + '日&nbsp;' + return0(date.getHours()) + ':' + return0(date.getMinutes()) + ':' + return0(date.getSeconds()) + '&nbsp;星期' + $day[date.getDay()];
+			$('#nowtime').html($nowtime);
+		}, 1000);
+	}
+
+	function newstyle4switchnav($cmd) {
+		var $icon = $('.newstyle4-nav>div:eq(0)>div:eq(0)>div:eq(2)>a:eq(1)>span:eq(0)');
+		if($($icon).hasClass('fa-caret-down') && $cmd == 'leave') return false;
+		if($($icon).hasClass('fa-caret-down')) {
+			var $navheight = 188;
+			var $advheight = $('.newstyle4-nav>div:eq(0)>div:eq(3)>div:eq(0)').outerHeight();
+			$('.newstyle4-nav').animate({
+				'height': $navheight + $advheight + 'px'
+			});
+			$('.newstyle4-nav').next().animate({
+				'height': $navheight + $advheight + 15 + 'px'
+			});
+			$('.newstyle4-nav>div:eq(0)>div:eq(0)>div:eq(2)').attr('onclick', '');
+		} else {
+			$('.newstyle4-nav').animate({
+				'height': '89px'
+			});
+			$('.newstyle4-nav').next().animate({
+				'height': '104px'
+			});
+			$('.newstyle4-nav>div:eq(0)>div:eq(0)>div:eq(2)').attr({
+				'onmouseenter': 'newstyle4switchnav();this.onmouseenter=\'\'',
+				'onclick': ''
+			});
+		}
+		$($icon).toggleClass('fa-caret-down').toggleClass('fa-caret-up');
+	}
+</script>

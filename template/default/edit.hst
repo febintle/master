@@ -1,0 +1,201 @@
+<link rel="stylesheet" href="template/default/css/edit.css">
+<div id="forumsdata" class="pk-hide">{$_G['TEMP']['FORUMSHTML']}</div>
+<script>
+	var lastclickforumid = 0;
+
+	function showforums($pid, $l, $t) {
+		var forumsdata = $('#forumsdata span');
+		var html = '';
+		var i2 = 0;
+		var xfs = $('.create-forum-l');
+		for(var i = 0; i < xfs.length; i++) {
+			if($(xfs[i]).data('id') >= $l) {
+				$(xfs[i]).remove();
+			}
+		}
+		var $icon = '',
+			$icon2 = 0;
+		for(var i = 0; i < forumsdata.length; i++) {
+			if($(forumsdata[i]).data('pid') == $pid && !$('#create-forum-' + $(forumsdata[i]).data('id')).attr('id')) {
+				i2++;
+				if($('#forumsdata span[data-pid="' + $(forumsdata[i]).data('id') + '"]').length) {
+					$icon = '<span class=" pk-float-right pk-padding-top-10 fa fa-chevron-right"></span>';
+					$icon2 = 1;
+				} else {
+					$icon = '';
+					$icon2 = 0;
+				}
+				html += '<div id="create-forum-' + $(forumsdata[i]).data('id') + '" class="pk-btn pk-btn-block pk-btn-primary pk-text-left pk-text-sm-xs pk-padding-left-sm-5 pk-padding-right-sm-5 pk-text-nowarp pk-overflow-hidden" title="' + $(forumsdata[i]).html() + '" onmouseover="if($(window).width()>1000){showforums(' + $(forumsdata[i]).data('id') + ',' + ($l + 1) + ',' + (i2 + $t - 1) + ')}" onclick="if((($(window).width()<1001&&lastclickforumid==' + $(forumsdata[i]).data('id') + ')||' + $icon2 + '==0||$(window).width()>1000)&&' + $(forumsdata[i]).data('banpostread') + '!=1){lastclickforumid=0;$(\'#showforums\').html(\'\');$(\'input[name=sortid]\').val(' + $(forumsdata[i]).data('id') + ');$(\'#showforum\').html(\'' + $(forumsdata[i]).data('title') + '\');showlabel(' + $(forumsdata[i]).data('id') + ')}else{lastclickforumid=' + $(forumsdata[i]).data('id') + ';showforums(' + $(forumsdata[i]).data('id') + ',' + ($l + 1) + ',' + (i2 + $t - 1) + ')}">' + $(forumsdata[i]).data('title') + $icon + '</div>';
+			}
+		}
+		if(html) {
+			$('#showforums').append('<div id="create-forum-l-' + $l + '" data-id="' + $l + '" class="pk-position-absolute pk-width-all create-forum-l" style="z-index:9999;left:' + ($l * $('#showforums').width()) + 'px;top:' + ($t * 32) + 'px;">' + html + '</div>');
+		}
+	}
+
+	function showlabel($id) {
+		if($id) {
+			var $label = $('#forum-' + $id).data('label');
+		} else {
+			var $label = "{$_G['SET']['DEFAULTLABEL']}";
+		}
+		var $html = '';
+		if($label) {
+			$label = $label.split(',');
+			for(var i = 0; i < $label.length; i++) {
+				$html += '<a href="javascript:" onclick="$(this).toggleClass(\'pk-active\')">' + $label[i] + '</a>';
+			}
+		}
+		$('#forumlabel').html('<span>帖子标签：</span>' + $html);
+	}
+	$(function() {
+		if("{$sortid}" != "0") {
+			showlabel(parseInt("{$sortid}"));
+			$('#showforum').html($('#forum-{$sortid}').data('title'));
+			if("{$label}" != "") {
+				var $clabel = "{$label}";
+				$clabel = $clabel.split(',');
+				var $clabels = $('#forumlabel>a');
+				for(var i = 0; i < $clabel.length; i++) {
+					for(var i2 = 0; i2 < $clabels.length; i2++) {
+						if($($clabels[i2]).html() == $clabel[i]) {
+							$($clabels[i2]).addClass('pk-active');
+						}
+					}
+				}
+			}
+		}
+	});
+</script>
+<div class="pk-container">
+	<div class="pk-background-color-white pk-padding-top-15 pk-padding-bottom-15">
+		<form name="form_post" method="post" action="index.php?c=post&type={$type}&id={$rrdata['id']}&return=json">
+			<div class="pk-row">
+				<div class="pk-w-sm-12">
+					<div class="pk-row">
+						<div class="pk-w-md-3 pk-w-sm-4 pk-margin-bottom-15 pk-padding-0">
+							<button id="showforum" type="button" class="pk-btn pk-btn-block pk-btn-primary pk-radius-top-left-4 pk-radius-bottom-left-4" onclick="if($('#showforums').html()){$('#showforums').html('');$(this).addClass('pk-radius-bottom-left-4')}else{showforums(0,0,1);$(this).removeClass('pk-radius-bottom-left-4')}">选择版块...</button>
+							<div id="showforums" class="pk-width-all"></div>
+						</div>
+
+						<div class="pk-w-md-9 pk-w-sm-8 pk-margin-bottom-15 pk-padding-0">
+							<input type="hidden" name="sortid" value="{$sortid}" />
+							<input type="hidden" name="label" value="" />
+							<input type="text" class="pk-textbox pk-textbox-noshadow pk-border-left-none" name="title" value="{$rrdata['title']}" placeholder="文章标题" required style="border-top-right-radius: 4px;border-bottom-right-radius: 4px;" autocomplete="off" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="pk-row">
+				<div class="pk-w-sm-12">
+					<div id="forumlabel"></div>
+				</div>
+			</div>
+
+			<div class="pk-row pk-margin-bottom-15">
+				<div class="pk-w-sm-12">
+					<textarea id="container" class="pk-width-all pk-textarea pk-radius-4" name="content" style="height:425px;" placeholder="您的浏览器太古董了，所以您只能裸着发布了T_T" required>{$rrdata['content']}</textarea>
+				</div>
+			</div>
+
+			<div class="pk-row pk-margin-bottom-15">
+				<div class="pk-w-sm-12 pk-text-sm">
+					阅读权限:
+					<input class="pk-textbox pk-padding-0 pk-padding-left-5 pk-display-inline pk-radius-4" type="number" name="readlevel" value="{$rrdata['readlevel']}" style="max-width: 66px;height: 22px;" />（您的阅读权限为：{$_G['USER']['READLEVEL']}）<br>
+					<div class="pk-hide-md" style="padding-top:5px;"></div>
+					<span class="pk-hide"><input type="checkbox" name="top" value="1">置顶 &nbsp;</span>
+					<span class="pk-hide"><input type="checkbox" name="high" value="1">精华 &nbsp;</span>
+					<input type="checkbox" name="replyafterlook" value="1">回复后查看正文
+				</div>
+			</div>
+
+			<div style="max-width: 240px;">
+				{loadVerifycode('post'.$_G['GET']['TYPE'],'')}
+			</div>
+
+			<div class="pk-row">
+				<div class="pk-w-sm-12">
+					<button id="postbtn" type="button" class="pk-btn pk-btn-primary">发布</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+	if($(window).width() < 1000) {
+		$(form_post.content).css('height', '177px');
+	}
+	$(function() {
+		var $showadminbtn = false,
+			$userqx = "{$_G['USER']['QUANXIAN']}";
+		$userqx = $userqx.split(',');
+		for(var $i = 0; $i < $userqx.length; $i++) {
+			if($userqx[$i] == 'admin' || $userqx[$i] == 'superadmin') {
+				$showadminbtn = true;
+				break;
+			}
+		}
+		if($showadminbtn || "{$_G['USER']['ID']}" == "1") {
+			$('input[name="top"],input[name="high"]').parent('span').removeClass('pk-hide');
+		}
+		if("{$rrdata['sortid']}") {
+			$('select[name="sortid"] option[value="{$rrdata[sortid]}"]').prop('selected', true);
+		}
+		if("{$rrdata['high']}" == "1")
+			$('input[name="high"]').prop('checked', true);
+		if("{$rrdata['top']}" == "1")
+			$('input[name="top"]').prop('checked', true);
+		if("{$rrdata['replyafterlook']}" == "1")
+			$('input[name="replyafterlook"]').prop('checked', true);
+		$('#postbtn').click(function() {
+			if(trim(form_post.title.value).length == 0) {
+				pkalert('请输入标题！', 'js:form_post.title.focus()');
+				return false;
+			}
+			if(trim(form_post.content.value).length == 0) {
+				pkalert('请输入内容！', 'form_post.content.focus()');
+				return false;
+			}
+			if(form_post.sortid.value == 0 && "{$type}" == "read") {
+				pkalert('请选择版块！', 'js:$("#showforum").click();$("body").scrollTop(0)');
+				return false;
+			}
+			var $label = $('#forumlabel a.pk-active'),
+				$labelhtml = '';
+			for(var i = 0; i < $label.length; i++) {
+				$labelhtml += ',' + $($label[i]).html();
+			}
+			if($labelhtml) {
+				$labelhtml = $labelhtml.substr(1);
+				form_post.label.value = $labelhtml;
+			}
+			form_post.content.value = form_post.content.value.replace(/\<div/g, '<p');
+			form_post.content.value = form_post.content.value.replace(/\<\/div\>/g, '</p>');
+			var $high, $top, $replyafterlook;
+			$high = $('input[name="high"]').prop('checked') ? 1 : 0;
+			$top = $('input[name="top"]').prop('checked') ? 1 : 0;
+			$replyafterlook = $('input[name="replyafterlook"]').prop('checked') ? 1 : 0;
+			$(this).prop('disabled', true).html('发布中...');
+			//数据打包
+			var formstring = FormDataPackaging('form[name="form_post"]:eq(0)');
+			$.post($('form[name="form_post"]:eq(0)').attr('action'), formstring, function(data) {
+				if(data['state'] == 'ok') {
+					//pkalert(data['msg'], 'js:location.href="index.php?c=read&id=' + data['rid'] + '"');
+					pktip(data['msg'], 'success', 1400, function() {
+						location.href = "index.php?c=read&id=" + data['rid'] + "&cache=refresh";
+					});
+				} else {
+					$('form[name="form_post"] input[name="verifycode"]').val('');
+					$('#verifycodeimageobject').click();
+					pkalert(data['msg'] || '未知错误');
+				}
+				$('#postbtn').prop('disabled', false).html('发布');
+			}, 'json').error(function() {
+				$('#postbtn').prop('disabled', false).html('发布');
+				$('form[name="form_post"]:eq(0)').attr('action', $('form[name="form_post"]:eq(0)').attr('action').replace('&return=json', ''));
+				form_post.submit();
+			});
+		});
+	});
+</script>

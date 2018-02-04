@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="template/puyuetian_newstyle4/css/foot.css" />
+<div class="pk-container pk-text-xs pk-text-center pk-padding-top-35">
+	<div style="border-top:solid 1px #ddd;"></div>
+	<div class="pk-row pk-padding-top-10 newstyle4-foot">
+		{$_G['SET']['FOOTERHTMLCODE']}
+		<a>{$_G['SET']['BEIANHAO']}</a>
+	</div>
+	<div class="pk-row pk-padding-top-10" style="color: #777;">
+		您的IP:{$_G['SYSTEM']['CLIENTIP']},{date('Y-m-d H:i:s',time())},Processed in {$_G['SYSTEM']['LOADTIMES']} second(s).
+	</div>
+	<div class="pk-row pk-padding-top-10" style="color: #777;">
+		免责声明: 本网不承担任何由内容提供商提供的信息所引起的争议和法律责任。
+	</div>
+	<div class="pk-row pk-padding-top-10 pk-padding-bottom-15" style="color: #777;">
+		Powered by
+		<a class="pk-hover-underline pk-text-bold" target="_blank" href="http://www.hadsky.com">HadSky</a> {htmlspecialchars(HADSKY_VERSION)}
+	</div>
+</div>

@@ -1,0 +1,161 @@
+<div id="gfgg" class="pk-width-all pk-padding-5 pk-padding-left-15 pk-padding-right-15 pk-text-sm pk-text-white pk-background-color-primary"></div>
+<div class="pk-row pk-padding-15 pk-padding-bottom-0">
+	<div class="pk-row pk-hide-sm  pk-overflow-hidden" style="border:solid 1px #ddd">
+		<div class="pk-padding-15 pk-padding-top-5 pk-padding-bottom-5" style="background-color: #ddd;">环境信息</div>
+		<div class="pk-padding-15 pk-text-sm">{$_G['TEMP']['CHKENVIRONMENT']}</div>
+	</div>
+</div>
+<div class="pk-row pk-padding-15">
+	<div class="pk-w-sm-12 pk-w-md-8 pk-padding-0">
+		<div class="pk-row pk-hide-sm  pk-overflow-hidden" style="border:solid 1px #ddd">
+			<div class="pk-padding-15 pk-padding-top-5 pk-padding-bottom-5" style="background-color: #ddd;">站点信息</div>
+			<div class="pk-w-sm-12">
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">网站域名：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{$_G['SYSTEM']['DOMAIN']}</div>
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">站点地址：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{GetHostByName($_SERVER['SERVER_NAME'])}</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">运行环境：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{$_SERVER['SERVER_SOFTWARE']}</div>
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">物理路径：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{$_G['SYSTEM']['PATH']}</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">PHP版本：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{phpversion()}</div>
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">MySQL版本：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{mysql_get_server_info()}</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">操作系统：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{php_uname('s')}</div>
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">运行方式：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{php_sapi_name()}</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm">
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">内存占用：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{Cnum(memory_get_usage()/1024)}Kb</div>
+					<div class="pk-w-sm-2 pk-text-right pk-text-bold pk-padding-right-0">您的IP：</div>
+					<div class="pk-w-sm-4 pk-padding-left-0">{getclientinfos('ip')}</div>
+				</div>
+			</div>
+		</div>
+		<div class="pk-row  pk-margin-top-15 pk-overflow-hidden" style="border:solid 1px #ddd">
+			<div class="pk-padding-15 pk-padding-top-5 pk-padding-bottom-5" style="background-color: #ddd;">站长信息</div>
+			<div id="zzloading" class="pk-w-sm-12">
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm">
+					<div class="pk-w-sm-12 pk-text-center"><span class="fa fa-spin fa-spinner"></span> 正在获取站长信息...</div>
+				</div>
+			</div>
+			<div id="zzxx" class="pk-w-sm-12 pk-hide">
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-md-2 pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">站长账号：</div>
+					<div id="zzzh" class="pk-w-md-4 pk-w-sm-8 pk-padding-left-0"></div>
+					<div class="pk-w-sm-12 pk-hide-md" style="height:5px;"></div>
+					<div class="pk-w-md-2 pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">剩余天豆：</div>
+					<div id="sytd" class="pk-w-md-4 pk-w-sm-8 pk-padding-left-0"></div>
+				</div>
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm">
+					<div class="pk-w-sm-12 pk-text-center">
+						<a target="_blank" class="pk-text-primary pk-hover-underline" href="http://www.hadsky.com/index.php?c=app&a=zhanzhang:index&s=changebinding">更换授权域名</a>
+						&nbsp;&nbsp;
+						<a target="_blank" class="pk-text-primary pk-hover-underline" href="http://www.hadsky.com/index.php?c=app&a=zhanzhang:index&s=shoudongbangdingwangzhan">更换绑定域名</a>
+					</div>
+				</div>
+			</div>
+			<div id="zzrl" class="pk-w-sm-12 pk-hide">
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm">
+					<div class="pk-w-sm-12 pk-text-center">我是站长，我要
+						<a target="_blank" class="pk-text-primary pk-hover-underline" href="http://www.hadsky.com/index.php?c=app&a=zhanzhang:index&s=bindingwebsite&domain={$_G['SYSTEM']['DOMAIN']}&yuncheckcode={$YUNCHECKCODE}">认领该站</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="pk-w-sm-4 pk-hide-sm pk-padding-right-0">
+		<div class="pk-row  pk-overflow-hidden" style="border:solid 1px #ddd">
+			<div class="pk-padding-15 pk-padding-top-5 pk-padding-bottom-5" style="background-color: #ddd;">程序信息</div>
+			<div class="pk-w-sm-12">
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">程序名称：</div>
+					<div class="pk-w-sm-8 pk-padding-left-0">HadSky</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">本地版本：</div>
+					<div class="pk-w-sm-8 pk-padding-left-0">{htmlspecialchars(HADSKY_VERSION)}</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">授权类型：</div>
+					<div id="sqxx" class="pk-w-sm-8 pk-padding-left-0">PYTSQ-MFB</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">开发人：</div>
+					<div class="pk-w-sm-8 pk-padding-left-0">蒲乐天</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">官方网址：</div>
+					<div class="pk-w-sm-8 pk-padding-left-0">
+						<a class="pk-hover-underline pk-text-secondary" target="_blank" href="http://www.hadsky.com">http://www.hadsky.com</a>
+					</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm" style="border-bottom: solid 1px #ddd;">
+					<div class="pk-w-sm-4 pk-text-right pk-text-bold pk-padding-right-0">官方QQ群：</div>
+					<div class="pk-w-sm-8 pk-padding-left-0">368240741</div>
+				</div>
+
+				<div class="pk-row pk-padding-top-15 pk-padding-bottom-15 pk-text-sm">
+					<div class="pk-w-sm-12 pk-text-center pk-text-bold pk-padding-right-0">Powered by <a class="pk-hover-underline" target="_blank" href="http://www.hadsky.com">HadSky</a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	$(function() {
+		//获取官方公告
+		$.getJSON("index.php?c=app&a=superadmin:index&s=api&url=" + encodeURIComponent("http://www.hadsky.com/index.php?c=app&a=zhanzhang:index3&s=getnotice"), function(data) {
+			if(data['state'] == 'ok') {
+				$('#gfgg').html(data['notice']);
+			} else {
+				$('#gfgg').html('获取公告失败！');
+			}
+		}).error(function() {
+			$('#gfgg').html('获取公告出错！');
+		});
+		//获取站长信息
+		var $domain = "{$_G['SYSTEM']['DOMAIN']}";
+		if($domain == 'localhost' || $domain == '127.0.0.1') {
+			$('#zzloading div div').html('本地环境无法与官方通讯');
+		} else {
+			$.getJSON("index.php?c=app&a=superadmin:index&s=api&url=" + encodeURIComponent("http://www.hadsky.com/index.php?c=app&a=zhanzhang:index2&s=getinfo&domain={$_G['SYSTEM']['DOMAIN']}&yuncheckcode={$YUNCHECKCODE}&rnd={$_G['RND']}&type=new"), function(data) {
+				if(data['state'] == 'ok') {
+					$('#sqxx').html(data['sqlx']);
+					$('#zzzh').html(data['userdata']['username']);
+					$('#sytd').html(data['userdata']['tiandou']);
+					$('#zzloading').addClass('pk-hide');
+					$('#zzxx').removeClass('pk-hide');
+				} else {
+					if(data['msg'] == 404) {
+						$('#zzloading').addClass('pk-hide');
+						$('#zzrl').removeClass('pk-hide');
+					} else {
+						$('#zzloading div div').html('与HadSky官方通讯失败！');
+					}
+				}
+			}).error(function() {
+				$('#zzloading div div').html('与HadSky官方通讯出错！');
+			});
+		}
+	});
+</script>

@@ -1,0 +1,55 @@
+<style>
+	.pk-table tr th,
+	.pk-table tr td {
+		padding-top: .5rem;
+		padding-bottom: .5rem;
+	}
+</style>
+<form name="form_save" method="post" action="index.php?c=app&a=superadmin:index&s=user&t=search">
+	<div class="pk-row pk-padding-bottom-15 pk-margin-bottom-15" style="border-bottom: solid 1px #458fce;">
+		<label class="pk-w-sm-3 pk-padding-top-5 pk-text-bold pk-text-right pk-text-primary pk-text-nowrap">用户搜索</label>
+		<div class="pk-w-sm-8"></div>
+	</div>
+
+	<div class="pk-row pk-padding-bottom-15">
+		<div class="pk-w-md-2 pk-hide-sm">&nbsp;</div>
+		<div class="pk-w-md-2 pk-w-sm-3 pk-padding-right-0 pk-text-right">
+			<select class="pk-textbox pk-text-right pk-textbox-noshadow" data-value="{$type}" name="type">
+				<option value="id">用户ID</option>
+				<option value="username">用户名</option>
+				<option value="nickname">用户昵称</option>
+			</select>
+		</div>
+		<div class="pk-w-md-3 pk-w-sm-6 pk-padding-0">
+			<input type="text" class="pk-textbox pk-border-left-none pk-border-right-none pk-textbox-noshadow" name="value" value="{$value}" />
+		</div>
+		<div class="pk-w-md-2 pk-w-sm-3 pk-padding-0">
+			<button class="pk-btn pk-btn-primary">搜索</button>
+		</div>
+	</div>
+
+	<div class='pk-row'>
+		<div class="pk-w-md-2 pk-hide-sm">&nbsp;</div>
+		<div class="pk-w-sm-12 pk-w-md-10">
+			<table class="pk-table pk-table-bordered pk-width-all pk-text-sm">
+				<tr>
+					<th>ID</th>
+					<th>用户组</th>
+					<th>用户名</th>
+					<th class="pk-hide-sm">昵称</th>
+					<th class="pk-hide-sm">{$_G['SET']['JIFENNAME']}</th>
+					<th class="pk-hide-sm">{$_G['SET']['TIANDOUNAME']}</th>
+					<th>管理</th>
+				</tr>
+				{$userlist}
+				<tr>
+					<td colspan="99">
+						<a class="pk-btn pk-btn-sm pk-btn-secondary pk-float-right" href="index.php?c=app&a=superadmin:index&s=user&t=search&page={htmlspecialchars({$page}+1)}">下一页</a>
+						<a class="pk-btn pk-btn-sm pk-btn-success pk-float-right" href="javascript:">{$page}</a>
+						<a class="pk-btn pk-btn-sm pk-btn-secondary pk-float-right" href="index.php?c=app&a=superadmin:index&s=user&t=search&page={htmlspecialchars({$page}-1)}">上一页</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>

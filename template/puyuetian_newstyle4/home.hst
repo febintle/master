@@ -1,0 +1,67 @@
+<link rel="stylesheet" href="template/puyuetian_newstyle4/css/hdp.css" />
+<script src="template/puyuetian_newstyle4/js/hdp.js"></script>
+<link rel="stylesheet" href="template/puyuetian_newstyle4/css/home.css" />
+<div class="pk-container">
+	<div class="pk-background-color-transparent">
+		<div class="pk-row">
+			<div class="pk-w-md-4 pk-padding-left-0 pk-padding-right-10">
+				<div class="pk-row pk-margin-bottom-10 pk-radius-2 pk-background-color-white" style="border:solid 1px #ddd;padding:2px;">
+					<div id="hdp">{$_G['TEMP']['SLIDE1']}</div>
+				</div>
+				<div class="pk-row">
+					<div class="pk-w-md-12 newstyle4-textbar">精彩导读</div>
+					<div class="pk-w-md-12 newstyle4-textcontent" style="height:127px;">
+						<ul>{$_G['TEMP']['HIGHREAD']}</ul>
+					</div>
+				</div>
+			</div>
+			<div class="pk-w-md-5 pk-padding-0">
+				<div class="pk-row">
+					<div class="pk-radius-2" style="border:solid 1px #ddd">
+						<div style="background: linear-gradient(to top,#ffffff,#dbecf9);">
+							<div class="pk-row pk-padding-5 pk-padding-top-10 pk-text-xs" style="height:31px;">
+								<div class="pk-w-md-5 pk-padding-0">
+									<span class="pk-background-color-primary pk-text-white">&nbsp;最新动态&nbsp;</span>
+								</div>
+								<div class="pk-w-md-7 pk-padding-0 pk-text-right" style="color: #999;">
+									{date('Y年m月d日')}
+								</div>
+							</div>
+							<div class="pk-row pk-padding-top-10" style="height:86px;">
+								<div class="pk-w-md-12 pk-text-center pk-text-danger pk-text-md pk-text-bold pk-text-truncate">
+									<a target="_blank" class="pk-hover-underline" href="{ReWriteURL('read','id={$_G['TEMP']['NA1I']}&page=1')}" title="{$_G['TEMP']['NA1T']}">{$_G['TEMP']['NA1T']}</a>
+								</div>
+								<div class="pk-w-md-12 pk-text-xs pk-text-truncate-multiline pk-padding-top-5 pk-margin-bottom-15" style="color: #666;height: 39px;">{$_G['TEMP']['NA1C']}</div>
+								<div class="pk-w-md-12">
+									<div style="border-bottom:dotted 1px #ddd;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="pk-row pk-padding-bottom-10 pk-text-sm newstyle4-jdcontent" style="height:270px;">{$_G['TEMP']['NA2']}</div>
+					</div>
+				</div>
+			</div>
+			<div class="pk-w-md-3 pk-padding-right-0 pk-padding-left-10">
+				<div class="pk-row pk-margin-bottom-10">
+					<div class="pk-w-md-12 newstyle4-textbar">快捷通道</div>
+					<div class="pk-w-md-12 newstyle4-bmfw pk-padding-0" style="height:49px;">{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_KJTDHTML']}</div>
+				</div>
+				<div class="pk-row">
+					<div class="pk-w-md-12 newstyle4-textbar">图文热点</div>
+					<div class="pk-w-md-12 newstyle4-hotimgs" style="height:258px;">{$_G['TEMP']['TWRD']}</div>
+				</div>
+			</div>
+		</div>
+		<div class="pk-row">{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_HOMEADV1']}</div>
+		<div class="pk-row newstyle4-bklb">{$_G['TEMP']['BKS']}</div>
+		<div class="pk-row">{$_G['SET']['TEMPLATE_PUYUETIAN_NEWSTYLE4_HOMEADV2']}</div>
+		<div class="pk-row">
+			<div class="pk-w-md-12 pk-padding-0">
+				<div class="newstyle4-textbar">我的小伙伴</div>
+			</div>
+			<div class="pk-w-md-12 pk-text-xs pk-padding-0">
+				<div class="pk-friendlink" style="border: solid 1px #ddd;border-radius: 0 0 2px 2px;padding: 10px;">{$_G['SET']['FRIENDLINKS']}</div>
+			</div>
+		</div>
+	</div>
+</div>

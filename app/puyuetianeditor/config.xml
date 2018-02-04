@@ -1,0 +1,9 @@
+﻿<?xml version="1.0"?>
+<app>
+	<name>PYT编辑器</name>
+	<version>v1.0.0.20160527</version>
+	<users>1</users>
+	<author>puyuetian</author>
+	<link>http://www.hadsky.com</link>
+	<description>PuyuetianEditor，由蒲乐天编写，功能很简单，目前处于测试阶段。</description>
+</app>

@@ -1,0 +1,83 @@
+/*
+	名称：幻灯片CSS
+	作者：蒲乐天
+	联系：QQ632827168
+	基于：jquery
+*/
+#hdp {
+	width: 100%;
+	height: 210px;
+	position: relative;
+}
+
+#hdp>a {
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+
+#hdp>a.active {
+	display: block;
+}
+
+#hdp>a>img {
+	width: 100%;
+	height: 100%;
+}
+
+#hdp>div:nth-of-type(1) {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	background-color: #000000;
+	opacity: 0.2;
+}
+
+#hdp>div:nth-of-type(2) {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 50px;
+	padding: 5px;
+}
+
+#hdp>div:nth-of-type(2)>a {
+	white-space: nowrap;
+	word-break: keep-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 14px;
+	color: white;
+	display: none;
+}
+
+#hdp>div:nth-of-type(2)>a.active {
+	display: block;
+}
+
+#hdp>div:nth-of-type(2)>a:hover {
+	text-decoration: underline;
+}
+
+#hdp>div:nth-of-type(2)>div {
+	text-align: right;
+}
+
+#hdp>div:nth-of-type(2)>div>span {
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	color: #333;
+	background-color: #fff;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#hdp>div:nth-of-type(2)>div>span.active,
+#hdp>div:nth-of-type(2)>div>span:hover {
+	color: #fff;
+	background-color: #458fce;
+	cursor: pointer;
+}

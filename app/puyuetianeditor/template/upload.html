@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>puyuetianeditor UploadImage</title>
+		<meta name="author" content="puyuetian qq632827168">
+		<meta name="website" content="http://www.hadsky.com">
+		<meta http-equiv="Cache-Control" content="no-siteapp">
+		<link rel="stylesheet" href="../../../template/puyuetianUI/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="../../../template/puyuetianUI/css/puyuetian.css" />
+		<script src="../../../template/puyuetianUI/js/jquery-1.12.4.js"></script>
+		<script>
+			//获取get参数
+			function $_GET($paramname, $url) {
+				var $a, $i;
+				var $param = new Array();
+				if(!$url) {
+					$url = document.URL;
+				}
+				var $spos = $url.indexOf('?');
+				if($spos != -1 && ($spos + 1) != $url.length) {
+					var $params = $url.substring($spos + 1, $url.length).split('&');
+					for($i = 0; $i < $params.length; $i++) {
+						$a = $params[$i].split('=');
+						if($a.length == 2) {
+							$param[$a[0]] = $a[1];
+						}
+					}
+					if($paramname) {
+						return $param[$paramname];
+					} else {
+						return $param;
+					}
+				} else {
+					return false;
+				}
+			}
+		</script>
+		<style>
+			* {
+				font-size: 14px;
+				color: #333;
+			}
+			
+			body {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body class="pk-text-center">
+		<form name="form_upload" method="post" enctype="multipart/form-data" action="">
+			<div id="PytUploadSelect" class="pk-row pk-text-center pk-margin-bottom-10">
+				<div class="pk-w-sm-12">
+					<button id="uploadbtn" type="button" class="pk-btn pk-radius-4 pk-btn-default">选择本地文件上传</button>
+					<input type="file" id="file" name="file[]" class="pk-hide" value="" placeholder="点击这里选择文件" />
+				</div>
+			</div>
+			<div id="PytUploadStatus" class="pk-row pk-text-center pk-margin-bottom-10 pk-hide">正在上传，请稍后...</div>
+		</form>
+		<script>
+			$('#file').change(function() {
+				if(!$('#file').val()) {
+					top.parent.pkalert("未选择任何文件");
+					return false;
+				}
+				$('#PytUploadSelect').addClass('pk-hide');
+				$('#PytUploadStatus').removeClass('pk-hide');
+				form_upload.submit();
+			});
+			$(function() {
+				if(!parent.PytEditor) {
+					$('body').html('非法的外部调用！');
+				} else {
+					if((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+						$('#file').removeClass('pk-hide');
+						$('#uploadbtn').addClass('pk-hide');
+					} else {
+						$('#uploadbtn').click(function() {
+							$('#file').click();
+						});
+					}
+					var $action = '../../../index.php?c=app&a=puyuetianeditor:index&s=upload&t=' + $_GET('t');
+					$('form[name="form_upload"]').attr('action', $action);
+					if($_GET('t') == 'image') {
+						$('#file').attr({
+							"multiple": "multiple",
+							"accept": "image/*"
+						});
+					}
+				}
+			});
+		</script>
+	</body>
+
+</html>

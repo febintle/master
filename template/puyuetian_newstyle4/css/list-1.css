@@ -1,0 +1,38 @@
+.newstyle4-listbt {
+	border-bottom: solid 1px #ddd;
+	background-color: #F2F2F2;
+	height: 48px;
+	line-height: 45px;
+	color: #777
+}
+
+.newstyle4-tjwz ul {
+	list-style: none;
+	font-size: 13px;
+	border-bottom: solid 1px #ddd;
+}
+
+.newstyle4-tjwz ul li:before {
+	content: "\00BB\2002";
+}
+
+.newstyle4-tjwz ul li {
+	color: #777;
+	padding: 0 5px;
+	display: block;
+	margin-top: 6px;
+	height: 16px;
+	line-height: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.newstyle4-tjwz ul li:nth-last-of-type(1) {
+	margin-bottom: 6px;
+}
+
+.newstyle4-tjwz a:hover {
+	color: #458fce;
+	text-decoration: underline;
+}

@@ -1,0 +1,33 @@
+body {
+	width: 100%;
+	padding: 1rem;
+	background-color: #fff;
+}
+
+@media only screen and (max-width: 1000px) {
+	padding: 0;
+}
+
+#SubmitBtn {
+	display: inline-block;
+	border: solid 1px transparent;
+	background-color: #0099FF;
+	color: #FFFFFF;
+	padding: 0rem 1.25rem;
+	height: 2rem;
+	line-height: 1.875rem;
+	font-size: .857rem;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-webkit-user-select: none;
+	vertical-align: middle;
+	display: none;
+}
+
+#SubmitBtn:hover {
+	background-color: #0077FF;
+}
+
+#SubmitBtn[disabled] {
+	background-color: #CCC;
+}
